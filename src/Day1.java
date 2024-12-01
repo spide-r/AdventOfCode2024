@@ -20,16 +20,35 @@ public class Day1 {
             });
             left.sort(Comparator.naturalOrder());
             right.sort(Comparator.naturalOrder());
-            int distance = 0;
-            for (int i = 0; i < left.size(); i++) {
-                int leftInt = left.get(i);
-                int rightInt = right.get(i);
-                int diff = Math.abs(leftInt - rightInt);
-                distance += diff;
-            }
+            int distance = partOne(left, right);
             System.out.println("Final Distance is " + distance);
+            int score = partTwo(left, right);
+
+            System.out.println("Final Score is " + score);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static int partTwo(ArrayList<Integer> left, ArrayList<Integer> right){
+        int score = 0;
+        for (int i = 0; i < left.size(); i++) {
+            int rightInt = right.get(i);
+            if(left.contains(rightInt)){
+                score += rightInt;
+            }
+        }
+        return score;
+    }
+
+    public static int partOne(ArrayList<Integer> left,ArrayList<Integer> right ){
+        int distance = 0;
+        for (int i = 0; i < left.size(); i++) {
+            int leftInt = left.get(i);
+            int rightInt = right.get(i);
+            int diff = Math.abs(leftInt - rightInt);
+            distance += diff;
+        }
+        return distance;
     }
 }
