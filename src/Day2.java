@@ -7,7 +7,7 @@ import java.util.List;
 public class Day2 {
     public static void main(String[] args) {
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("input\\Day2.txt"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("bigboys\\Day2.txt"));
             final int[] safeAmt = {0};
             final int[] safeAmtPt2 = {0};
             bufferedReader.lines().forEach(line ->
@@ -65,7 +65,7 @@ public class Day2 {
 
             if(Math.abs(currentDelta) > 3 || currentDelta == 0 ){
 
-                return safeAfterOneRemove(report);
+                return safeAfterOneRemoveV2(report, i);
             }
 
             if(i == 0){
@@ -75,10 +75,23 @@ public class Day2 {
 
             if((lastDelta > 0 && currentDelta < 0 ) || (lastDelta < 0 && currentDelta > 0)){
 
-                return safeAfterOneRemove(report);
+                return safeAfterOneRemoveV2(report, i);
             }
         }
         return true;
+    }
+
+    private static boolean safeAfterOneRemoveV2(ArrayList<Integer> report, int idx){
+        ArrayList<Integer> copied = (ArrayList<Integer>) report.clone();
+        copied.remove(idx);
+        if(isSafe(copied)){
+            return true;
+        }
+
+        ArrayList<Integer> copied2 = (ArrayList<Integer>) report.clone();
+        copied2.remove(idx+1);
+        return isSafe(copied2);
+
     }
 
     private static boolean safeAfterOneRemove(ArrayList<Integer> report){
