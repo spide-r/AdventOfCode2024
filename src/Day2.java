@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Day2 {
     public static void main(String[] args) {
@@ -10,7 +12,8 @@ public class Day2 {
             final int[] safeAmtPt2 = {0};
             bufferedReader.lines().forEach(line ->
             {
-                int[] values = Arrays.stream(line.split(" ")).mapToInt(Integer::parseInt).toArray();
+                List<Integer>  valuesImmute = Arrays.stream(line.split(" ")).map(Integer::valueOf).toList();
+                ArrayList<Integer> values = new ArrayList<>(valuesImmute);
                 boolean safe = isSafe(values);
                 boolean safe2 = isSafePart2(values);
                 if(safe){
@@ -29,11 +32,11 @@ public class Day2 {
         }
     }
 
-    public static boolean isSafe(int[] report){
+    public static boolean isSafe(ArrayList<Integer> report){
         int lastDelta = 0;
-        for (int i = 0; i < report.length-1; i++) {
-            int current = report[i];
-            int next = report[i+1];
+        for (int i = 0; i < report.size() - 1; i++) {
+            int current = report.get(i);
+            int next = report.get(i+1);
             int currentDelta = current - next;
 
             if(Math.abs(currentDelta) > 3 || Math.abs(currentDelta) < 1 ){
@@ -52,15 +55,17 @@ public class Day2 {
         return true;
     }
 
-    public static boolean isSafePart2(int[] report){
+    public static boolean isSafePart2(ArrayList<Integer> report){
         int lastDelta = 0;
-        for (int i = 0; i < report.length; i++) {
-            int current = report[i];
-            int next = report[i+1];
-            int currentDelta = current - next;
+        for (int i = 0; i < report.size() - 1; i++) {
+            int currentLevel = report.get(i);
+            int next = report.get(i+1);
+            int currentDelta = currentLevel - next;
 
-            if(Math.abs(currentDelta) > 3 || Math.abs(currentDelta) < 1 ){
-                return false;
+
+            if(Math.abs(currentDelta) > 3 || currentDelta == 0 ){
+
+                return safeAfterOneRemove(report);
             }
 
             if(i == 0){
@@ -69,9 +74,21 @@ public class Day2 {
             }
 
             if((lastDelta > 0 && currentDelta < 0 ) || (lastDelta < 0 && currentDelta > 0)){
-                return false;
+
+                return safeAfterOneRemove(report);
             }
         }
         return true;
+    }
+
+    private static boolean safeAfterOneRemove(ArrayList<Integer> report){
+        for (int i = 0; i < report.size(); i++) {
+            ArrayList<Integer> copied = (ArrayList<Integer>) report.clone();
+            copied.remove(i);
+            if(isSafe(copied)){
+                return true;
+            }
+        }
+        return false;
     }
 }
