@@ -7,7 +7,7 @@ import java.util.List;
 public class Day2 {
     public static void main(String[] args) {
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("bigboys\\Day2.txt"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("input\\Day2Edgecase.txt"));
             final int[] safeAmt = {0};
             final int[] safeAmtPt2 = {0};
             bufferedReader.lines().forEach(line ->
