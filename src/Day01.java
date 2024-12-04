@@ -1,12 +1,10 @@
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.TreeSet;
 
-public class Day1 {
+public class Day01 {
 
     public static void main(String[] args) {
         ArrayList<Integer> left = new ArrayList<>();

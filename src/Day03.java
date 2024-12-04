@@ -1,12 +1,9 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Day3 {
+public class Day03 {
     public static void main(String[] args) {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("bigboys\\Day3.txt"));

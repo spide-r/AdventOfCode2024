@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Day2 {
+public class Day02 {
     public static void main(String[] args) {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("input\\Day2Edgecase.txt"));
