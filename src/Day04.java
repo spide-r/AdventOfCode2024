@@ -5,10 +5,9 @@ import java.util.HashMap;
 public class Day04 {
     public static void main(String[] args) {
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("input\\Day4.txt"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("bigboys\\Day4.txt"));
 
             HashMap<Integer, String> crossword = new HashMap<>();
-           // char[][] crossword = new char[bufferedReader.readLine().length()][depth];
             final int[] lineCount = {0};
             bufferedReader.lines().forEach(line ->
             {
@@ -117,12 +116,8 @@ public class Day04 {
         //check diagonal left
         StringBuilder potentialXMAS = new StringBuilder();
         for (int k = 0; k < 4; k++) {
-            System.out.println("DiagR: " + (i+k) + " " + (j-k) + " | " + crossword.get(i+k).charAt(j-k));
-
             potentialXMAS.append(crossword.get(i+k).charAt(j-k));
         }
-        System.out.println(potentialXMAS.toString() +  " | " + isXMAS(potentialXMAS.toString()));
-
         return isXMAS(potentialXMAS.toString());
     }
 }
