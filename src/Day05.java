@@ -6,7 +6,7 @@ import java.util.*;
 public class Day05 {
     public static void main(String[] args) {
         try{
-            BufferedReader bufferedReader = new BufferedReader(new FileReader("input\\Day5.txt"));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("bigboys\\Day5.txt"));
             HashMap<String, HashSet<String>> printRulesInverted = new HashMap<>();
             HashMap<String, HashSet<String>> printRules = new HashMap<>();
             ArrayList<ArrayList<String>> printUpdates = new ArrayList<>();
